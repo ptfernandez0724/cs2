@@ -13,6 +13,13 @@ const productSchema = new mongoose.Schema({
         type: Date,
         default: new Date()
     },
+    category: {
+        type: String,
+        required: [true, 'Category is required']
+    },   
+    // imageId: {
+    //     type: Image
+    // },
     price: {
         type: Number,
         required: [true, 'Price is required']
@@ -27,6 +34,14 @@ const productSchema = new mongoose.Schema({
                 type: String,
                 required: [true, 'Userid is required']
             },
+            quantity: {
+                type: Number,
+                required: [true, 'Quantity is required']
+            },
+            totalAmount:{
+                type: Number,
+                required: [true, 'Amount is required']
+            },
             dateOrdered: {
                 type: Date,
                 required: new Date()
@@ -38,6 +53,14 @@ const productSchema = new mongoose.Schema({
             userId: {
                 type: String,
                 required: [true, 'Userid is required']
+            },
+            quantity: {
+                type: Number,
+                required: [true, 'Quantity is required']
+            },
+            totalAmount:{
+                type: Number,
+                required: [true, 'Amount is required']
             },
             dateOfPurchase: {
                 type: Date,

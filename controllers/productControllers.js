@@ -1,33 +1,44 @@
 const Product = require('../models/product');
+const User = require('../models/user');
 
 
-// add product
-module.exports.addProductCategory = (data) => {
+// add product as seller
+module.exports.addProduct = async (req, userId) => {
 
-        // let newProduct = new Product({
-        //     name: data.product.name,
-        //     description: data.product.description,
-        //     price: data.product.price
-        // });
+    let newProduct = await new Product({
+        name: req.body.name,
+        description: req.body.description,
+        category: req.body.category,
+        price: req.body.price
+    })
 
-        // return newProduct.save().then((product, error) => {
-        //     if(error){
-        //         return false;
-        //     } else {
-        //         return true;
-        //     }
-        // })
+    return await newProduct.save().then((product, error) => 
+        {
+            console.log("new product: " + product)
 
-    return Product.addProductCategory(data, 
-        {   name: data.product.name,
-            description: data.product.description   
-        })
-    .save()
-    .then(newProduct => { 
-        return (newProduct) 
-            ? { message: "Product Category is added"} 
-            : { message: "Failed" }; })
-    .catch(error => res.status(500).send({message: "Internal Server Error"}))
+            if (error) {
+                return false
+            } else {
+                return User.updateOne( 
+                    {
+                        _id: userId
+                    },
+                    {
+                        $push: { 
+                            sellItems: { 
+                                productId: product._id
+                            }
+                        }
+                    }
+                )
+                .then(result => { (result.modifiedCount>=1) 
+                    return (result)
+                    ? "Product added successfully"
+                    : "Product added failed"
+                })
+            }
+        }
+    )
 }
 
 // get all products
@@ -38,8 +49,8 @@ module.exports.getAllProducts = () => {
 }
 
 // get specific product
-module.exports.getSpecific = (reqParams) => {
-    return Product.findById(reqParams.productId).then(result => {
+module.exports.getSpecific = (req) => {
+    return Product.findById(req.productId).then(result => {
         return result;
     })
 }
@@ -53,8 +64,9 @@ module.exports.updateProduct = (req) => {
         })
     .then(updatedProduct => { 
         return (updatedProduct) 
-            ? { message: "Product update was successful"} 
-            : { message: "Product update failed" }; })
+            ? "Product update was successful"
+            :  "Product update failed" 
+        })
     .catch(error => res.status(500).send({message: "Internal Server Error"}))
 }
 
@@ -65,7 +77,9 @@ module.exports.archiveProduct = (req) => {
         })
     .then(archivedProduct => { 
         return (archivedProduct) 
-            ? { message: "Product archive was successful"} 
-            : { message: "Product archive failed" }; })
+            ? "Product archive was successful" 
+            : "Product archive failed" 
+        })
     .catch(error => res.status(500).send({message: "Internal Server Error"}))
 }
+
