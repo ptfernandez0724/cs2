@@ -65,7 +65,7 @@ module.exports.updateProduct = (req) => {
     .then(updatedProduct => { 
         return (updatedProduct) 
             ? "Product update was successful"
-            :  "Product update failed" 
+            : "Product update failed" 
         })
     .catch(error => res.status(500).send({message: "Internal Server Error"}))
 }
@@ -73,7 +73,7 @@ module.exports.updateProduct = (req) => {
 // archive product
 module.exports.archiveProduct = (req) => {
     return Product.findByIdAndUpdate({ _id: req.params.productId }, 
-        {   isAvailable: false
+        {   status: 'Unavailable'
         })
     .then(archivedProduct => { 
         return (archivedProduct) 

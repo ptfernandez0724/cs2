@@ -6,8 +6,7 @@ const { addListener } = require('../models/product');
 
 
 // post product
-//todo: make this as a create product route
-//todo: test!
+
 router.post('/', auth.verify, (req, res) => {
     const userId = auth.decode(req.headers.authorization).id
     console.log("userId: " + userId)
@@ -25,10 +24,9 @@ router.get('/:productId', (req, res) => {
 });
 
 // update product
-//todo: test!
 router.put('/:productId', auth.verify, (req, res) => {
     const userId = auth.decode(req.headers.authorization).id
-    console.log("userId: " + userId)   
+      
     productController.updateProduct(req,userId).then(result => res.status(201).send(result));
     
 });
@@ -36,7 +34,7 @@ router.put('/:productId', auth.verify, (req, res) => {
 // archive product
 router.put('/:productId/archive', auth.verify, (req, res) => {
     const userId = auth.decode(req.headers.authorization).id
-    console.log("userId: " + userId)
+    
     productController.archiveProduct(req,userId).then(result => res.send(result))
     
 });

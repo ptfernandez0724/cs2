@@ -1,31 +1,45 @@
-const Product = require('../models/product');
-const User = require('../models/user');
+const Category = require('../models/category');
 
-module.exports.addProductCategory = (data) => {
 
-    // let newProduct = new Product({
-    //     name: data.product.name,
-    //     description: data.product.description,
-    //     price: data.product.price
-    // });
+// add category
+module.exports.addCategory = async (req) => {
 
-    // return newProduct.save().then((product, error) => {
-    //     if(error){
-    //         return false;
-    //     } else {
-    //         return true;
-    //     }
-    // })
+    let newCategory = new Category({
+        name: req.body.name,
+        description: req.body.description
+    });
 
-return Product.addProductCategory(data, 
-    {   name: data.product.name,
-        description: data.product.description   
-    })
-.save()
-.then(newProduct => { 
-    return (newProduct) 
-        ? "Product Category is added" 
-        : "Failed" 
-    })
-.catch(error => res.status(500).send({message: "Internal Server Error"}))
+    return await newCategory.save()
+    .then(newCategory => { 
+        return (newCategory) 
+            ? "Category is added" 
+            : "Failed" 
+        })
+    .catch(error => res.status(500).send({message: "Internal Server Error"}))
+}
+
+// update category
+module.exports.updateCategory = (req) => {
+    return Category.findByIdAndUpdate({ _id: req.params.categoryId }, 
+        {   name: req.body.name            
+        })
+    .then(updatedCategory => { 
+        return (updatedCategory) 
+            ? "Category update was successful"
+            : "Category update failed" 
+        })
+    .catch(error => res.status(500).send({message: "Internal Server Error"}))
+}
+
+// archive category
+module.exports.archiveCategory = (req) => {
+    return Category.findByIdAndUpdate({ _id: req.params.categoryId }, 
+        {   isAvailable: false
+        })
+    .then(archivedCategory => { 
+        return (archivedCategory) 
+            ? "Category archive was successful" 
+            : "Category archive failed" 
+        })
+    .catch(error => res.status(500).send({message: "Internal Server Error"}))
 }

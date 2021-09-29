@@ -32,5 +32,26 @@ router.post('/checkout', auth.verify, (req, res) => {
     userController.checkout(data).then(result => res.send(result))
 })
 
+// get user's orders
+router.get('/orders', auth.verify, (req, res) => {
+    let data = {
+        userId: auth.decode(req.headers.authorization).id
+    }
+    userController.getOrders(data).then(result => res.send(result))
+})
+
+// retrieve all orders
+router.get('/getallorders', auth.verify, (req, res) => {
+    let data = {
+        isAdmin: auth.decode(req.headers.authorization).isAdmin
+    }
+    if(data.isAdmin){
+        userController.getAllOrders().then(result => res.send(result))
+    } else {
+        res.send('not admin') 
+    }
+    
+})
+
 
 module.exports = router;

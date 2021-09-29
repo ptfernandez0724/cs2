@@ -24,30 +24,34 @@ const productSchema = new mongoose.Schema({
         type: Number,
         required: [true, 'Price is required']
     },
-    isAvailable: {
-        type: Boolean,
-        default: true
+    // isAvailable: {
+    //     type: Boolean,
+    //     default: true
+    // },
+    status: {
+        type: String,
+        default: 'Available'
     },
-    userAddToCart: [
-        {
-            userId: {
-                type: String,
-                required: [true, 'Userid is required']
-            },
-            quantity: {
-                type: Number,
-                required: [true, 'Quantity is required']
-            },
-            totalAmount:{
-                type: Number,
-                required: [true, 'Amount is required']
-            },
-            dateOrdered: {
-                type: Date,
-                required: new Date()
-            }          
-        }
-    ],
+    // userAddToCart: [
+    //     {
+    //         userId: {
+    //             type: String,
+    //             required: [true, 'Userid is required']
+    //         },
+    //         quantity: {
+    //             type: Number,
+    //             required: [true, 'Quantity is required']
+    //         },
+    //         totalAmount:{
+    //             type: Number,
+    //             required: [true, 'Amount is required']
+    //         },
+    //         dateOrdered: {
+    //             type: Date,
+    //             required: new Date()
+    //         }          
+    //     }
+    // ],
     userPurchased: [
         {
             userId: {

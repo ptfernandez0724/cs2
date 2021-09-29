@@ -8,6 +8,10 @@ const categorySchema = new mongoose.Schema({
     createdOn: {
         type: Date,
         default: new Date()
+    },
+    isAvailable: {
+        type: Boolean,
+        default: true
     }
 });
 
