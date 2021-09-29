@@ -69,7 +69,7 @@ _Adds the product to user's cart._
 
 Example: POST  http://localhost:4000/users/addtocart
 
-_Requires a bearer token returned from POST /api/users/login_
+_Requires a bearer token returned from POST /users/login_
 
 Request body:
 
@@ -83,7 +83,7 @@ _Lets the user checkout/order the product added in the cart._
 
 Example: POST  http://localhost:4000/users/checkout
 
-_Requires a bearer token returned from POST /api/users/login_
+_Requires a bearer token returned from POST /users/login_
 
 Request body:
 
@@ -117,7 +117,7 @@ _Creates a product._
 
 Example: POST  http://localhost:4000/products/
 
-_Requires a bearer token returned from POST /api/users/login_
+_Requires a bearer token returned from POST /users/login_
 
 Request body:
 
@@ -146,7 +146,7 @@ _Updates a product posted by the user._
 
 Example: PUT  http://localhost:4000/products/:productId
 
-_Requires a bearer token returned from POST /api/users/login_
+_Requires a bearer token returned from POST /users/login_
 
 Request body:
 
@@ -162,7 +162,7 @@ _Archives a product posted by the user._
 
 Example: PUT  http://localhost:4000/products/:productId/archive
 
-_Requires a bearer token returned from POST /api/users/login_
+_Requires a bearer token returned from POST /users/login_
 
 
 ## POST /categories/
@@ -171,7 +171,7 @@ _Creates a new Category (for user admin only)._
 
 Example: POST  http://localhost:4000/categories/
 
-_Requires an admin bearer token returned from POST /api/users/login_
+_Requires an admin bearer token returned from POST /users/login_
 
 Request body:
 
@@ -185,7 +185,7 @@ _Updates a Category (for user admin only)._
 
 Example: PUT  http://localhost:4000/categories/:categoryId
 
-_Requires an admin bearer token returned from POST /api/users/login_
+_Requires an admin bearer token returned from POST /users/login_
 
 Request body:
 
@@ -199,6 +199,6 @@ _Archives a Category (for user admin only)._
 
 Example: PUT  http://localhost:4000/categories/:categoryId/archive
 
-_Requires an admin bearer token returned from POST /api/users/login_
+_Requires an admin bearer token returned from POST /users/login_
 
     
