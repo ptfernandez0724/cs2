@@ -12,23 +12,12 @@ git clone https://github.com/ptfernandez0724/cs2.git
 npm i
 ```
 
-## Before you start
-```
-create config/config.env file with the following parameters:
-  MONGO_URI=<mongodb URI for production>
-  MONGO_TEST_DB1=<mongodb URI for testing user routes>
-  MONGO_TEST_DB2=<mongodb URI for testing apartment routes (should be different from MONGO_TEST_DB1)>
-  APP_SECRET=<random string>
-  PORT=<local port number>
-```
+
 ## Start the server
 ```
 node index.js
 ```
-## Run tests
-```
-npm run test
-``` 
+
 
 
 

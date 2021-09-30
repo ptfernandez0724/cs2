@@ -32,26 +32,6 @@ const productSchema = new mongoose.Schema({
         type: String,
         default: 'Available'
     },
-    // userAddToCart: [
-    //     {
-    //         userId: {
-    //             type: String,
-    //             required: [true, 'Userid is required']
-    //         },
-    //         quantity: {
-    //             type: Number,
-    //             required: [true, 'Quantity is required']
-    //         },
-    //         totalAmount:{
-    //             type: Number,
-    //             required: [true, 'Amount is required']
-    //         },
-    //         dateOrdered: {
-    //             type: Date,
-    //             required: new Date()
-    //         }          
-    //     }
-    // ],
     userPurchased: [
         {
             userId: {

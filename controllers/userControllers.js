@@ -141,7 +141,14 @@ module.exports.checkout = async (data) => {
                     { 
                         _id: data.productId 
                     }, 
-                    {   status: 'Unavailable'
+                    {   status: 'Unavailable',
+                    
+                        $push:
+                        {
+                            userPurchased: {
+                                _id: data.userId
+                            }
+                        }
                     }
                 )
                 .then(result => 
