@@ -4,19 +4,6 @@ const auth = require('../auth');
 const Product = require('../models/product');
 
 
-/*
-    Checkout algorithm (from cart to purchase/checkout)
-     1) Find user's cartitems
-     2) Update user's purchaseHistory to add user's cart items
-     3) Empty user's cart items
-*/
-/*
-    Retrieve all orders algorithm 
-     1) Get all user
-     2) Loop all fetched users, access their purchaseHistory then put in an array
-     3) return array
-*/
-
 
 // user registration
 module.exports.registerUser = (reqBody) => {
@@ -142,7 +129,7 @@ module.exports.checkout = async (data) => {
                         _id: data.productId 
                     }, 
                     {   status: 'Unavailable',
-                    
+
                         $push:
                         {
                             userPurchased: {
@@ -201,7 +188,9 @@ module.exports.getAllOrders = () => {
                     orders.push(orderDetails)
                 } 
             }
-            return (orders.length>0) ? orders : "No user order"
+            return (orders.length>0) 
+            ? orders 
+            : "No user order"
         })
 }
 

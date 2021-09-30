@@ -13,7 +13,7 @@ router.post('/', auth.verify, (req, res) => {
     if(data.isAdmin){
     categoryController.addCategory(req).then(result => res.status(201).send(result));
     } else {
-        res.send(false)
+        res.status(401).send('unauthorized')
     }
 });
 // update category
@@ -24,7 +24,7 @@ router.put('/:categoryId', auth.verify, (req, res) => {
     if(data.isAdmin){
     categoryController.updateCategory(req).then(result => res.status(201).send(result));
     } else {
-        res.send(false)
+        res.status(401).send('unauthorized')
     }
 });
 // archive category
@@ -35,7 +35,7 @@ router.put('/:categoryId/archive', auth.verify, (req, res) => {
     if(data.isAdmin){
     categoryController.archiveCategory(req).then(result => res.send(result))
     } else {
-        res.send(false)
+        res.status(401).send('unauthorized')
     }
 });
 

@@ -24,10 +24,6 @@ const productSchema = new mongoose.Schema({
         type: Number,
         required: [true, 'Price is required']
     },
-    // isAvailable: {
-    //     type: Boolean,
-    //     default: true
-    // },
     status: {
         type: String,
         default: 'Available'
