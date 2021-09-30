@@ -15,7 +15,7 @@ npm i
 
 ## Start the server
 ```
-node index.js
+npm start
 ```
 
 
