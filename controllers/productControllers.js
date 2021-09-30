@@ -9,13 +9,12 @@ module.exports.addProduct = async (req, userId) => {
         name: req.body.name,
         description: req.body.description,
         category: req.body.category,
-        price: req.body.price
+        price: req.body.price,
+        createdBy: userId
     })
 
     return await newProduct.save().then((product, error) => 
         {
-            console.log("new product: " + product)
-
             if (error) {
                 return false
             } else {
@@ -31,10 +30,10 @@ module.exports.addProduct = async (req, userId) => {
                         }
                     }
                 )
-                .then(result => { (result.modifiedCount>=1) 
+                .then(result => { 
                     return (result)
-                    ? "Product added successfully"
-                    : "Product added failed"
+                                    ? "Product added successfully"
+                                    : "Product added failed"
                 })
             }
         }
@@ -56,18 +55,22 @@ module.exports.getSpecific = (req) => {
 }
 
 // update product
-module.exports.updateProduct = (req) => {
-    return Product.findByIdAndUpdate({ _id: req.params.productId }, 
-        {   name: req.body.name, 
-            description: req.body.description, 
-            price: req.body.price 
-        })
-    .then(updatedProduct => { 
-        return (updatedProduct) 
-            ? "Product update was successful"
-            : "Product update failed" 
-        })
-    .catch(error => res.status(500).send({message: "Internal Server Error"}))
+module.exports.updateProduct = async (req, userId) => {
+
+        return await Product.findOneAndUpdate({ _id: req.params.productId, createdBy: userId }, 
+            {   name: req.body.name, 
+                description: req.body.description, 
+                category: req.body.category,
+                price: req.body.price 
+            })
+        .then(async updatedProduct => {          
+            return await (updatedProduct)
+                ? "Product update successfully"
+                : "Product update was unsuccessful"
+            
+            })
+        .catch(error => res.status(500).send({message: "Internal Server Error"}))
+    
 }
 
 // archive product

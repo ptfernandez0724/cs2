@@ -9,7 +9,6 @@ const { addListener } = require('../models/product');
 
 router.post('/', auth.verify, (req, res) => {
     const userId = auth.decode(req.headers.authorization).id
-    console.log("userId: " + userId)
     productController.addProduct(req, userId).then(result => res.status(201).send(result));
 });
 
@@ -25,8 +24,7 @@ router.get('/:productId', (req, res) => {
 
 // update product
 router.put('/:productId', auth.verify, (req, res) => {
-    const userId = auth.decode(req.headers.authorization).id
-      
+    const userId = auth.decode(req.headers.authorization).id    
     productController.updateProduct(req,userId).then(result => res.status(201).send(result));
     
 });
@@ -34,7 +32,6 @@ router.put('/:productId', auth.verify, (req, res) => {
 // archive product
 router.put('/:productId/archive', auth.verify, (req, res) => {
     const userId = auth.decode(req.headers.authorization).id
-    
     productController.archiveProduct(req,userId).then(result => res.send(result))
     
 });

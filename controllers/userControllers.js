@@ -71,7 +71,7 @@ module.exports.addToCart = async (data) => {
                 
                 return await Product.updateOne(
                     { 
-                        _id: data.productId 
+                        _id: data.productId, status: 'Available' 
                     }, 
                     {   status: 'AddedToCart'
                     }
@@ -89,7 +89,7 @@ module.exports.addToCart = async (data) => {
                     }
                 )
             } else {
-                console.log(result)
+                
                 return "Product add to cart was unsucessful"
             }
 
@@ -126,7 +126,7 @@ module.exports.checkout = async (data) => {
                 
                 return await Product.updateOne(
                     { 
-                        _id: data.productId 
+                        _id: data.productId, status: 'AddedToCart'
                     }, 
                     {   status: 'Unavailable',
 
@@ -151,7 +151,7 @@ module.exports.checkout = async (data) => {
                     }
                 )
             } else {
-                console.log(result)
+                
                 return "Order was unsucessful"
             }
 

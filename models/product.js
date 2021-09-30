@@ -28,6 +28,10 @@ const productSchema = new mongoose.Schema({
         type: String,
         default: 'Available'
     },
+    createdBy: {
+        type: String,
+        required: [true, 'Required']
+    },
     userPurchased: [
         {
             userId: {
