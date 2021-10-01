@@ -40,9 +40,9 @@ module.exports.addProduct = async (req, userId) => {
     )
 }
 
-// get all products
+// get all available products
 module.exports.getAllProducts = () => {
-    return Product.find({}).then(result =>{
+    return Product.find({status: 'Available'}).then(result =>{
         return result;
     })
 }

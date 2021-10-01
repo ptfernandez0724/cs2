@@ -1,5 +1,5 @@
 # Capstone 2: Backend Development
-Backend for E-commerce user registration and authentication, product creation and order execution.
+Backend for a buy and sell e-commerce platform where users can create an account, sell items, add items to cart and purchase them after.
 
 ## Tech Stack
 - Node.js

@@ -12,7 +12,7 @@ router.post('/', auth.verify, (req, res) => {
     productController.addProduct(req, userId).then(result => res.status(201).send(result));
 });
 
-// get all products
+// get all available products
 router.get('/all', (req, res) => {
     productController.getAllProducts().then(result => res.status(200).send(result));
 });

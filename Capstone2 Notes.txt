@@ -1,0 +1,6 @@
+- Give an overview of the project
+- Mention technology stack used
+- Explain models
+	- Expound user model and explain sellitems, cartitems and purchase history
+	- Mention that categories can only be created or deleted by admins. This is to control the type/category of products that can be posted onto the platform
+- Explain the endpoints. (e.g. Ill now explain the endpoints by going through the user journey)
