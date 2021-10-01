@@ -51,6 +51,49 @@ Request body:
           "email": "johndoe@email.com",
           "password": "johndoe"  
       }
+
+## POST /products/
+
+_Creates a product._
+
+Example: POST  http://localhost:4000/products/
+
+_Requires a bearer token returned from POST /users/login_
+
+Request body:
+
+      {
+          "name": "Iphone 13 pro",
+          "description": "This is an unused iphone",
+          "category": "Electronics",
+          "price": 50000    
+      }
+
+## PUT /products/:productId
+
+_Updates a product posted by the user._
+
+Example: PUT  http://localhost:4000/products/:productId
+
+_Requires a bearer token returned from POST /users/login_
+
+Request body:
+
+      {
+          "name": "Iphone 13 pro",
+          "description": "This is an unused iphone"
+          "price": 50000    
+      }
+
+## PUT /products/:productId/archive
+
+_Archives a product posted by the user._
+
+Example: PUT  http://localhost:4000/products/:productId/archive
+
+_Requires a bearer token returned from POST /users/login_
+
+
     
 ## POST /users/addtocart
 
@@ -80,7 +123,7 @@ Request body:
           "productId": "615439c5a06289de14889d0f" 
       }
 
-        
+
 ## GET /users/orders
 
 _Returns all the orders made by the user._
@@ -89,69 +132,6 @@ Example: GET  http://localhost:4000/users/orders
 
 _Requires a bearer token returned from POST /users/login_
 
-
-## GET /users/getallorders
-
-_Returns all the orders made by all users (for admin user only)._
-
-Example: GET  http://localhost:4000/users/getallorders
-
-_Requires an admin bearer token returned from POST /users/login_
-
-
-
-## POST /products/
-
-_Creates a product._
-
-Example: POST  http://localhost:4000/products/
-
-_Requires a bearer token returned from POST /users/login_
-
-Request body:
-
-      {
-          "name": "Iphone 13 pro",
-          "description": "This is an unused iphone",
-          "category": "Electronics",
-          "price": 50000    
-      }
-
-## GET /products/all
-
-_Returns all products posted._
-
-Example: GET  http://localhost:4000/users/all
-
-## GET /products/:productId
-
-_Returns a specific product posted._
-
-Example: GET  http://localhost:4000/users/:productId
-
-## PUT /products/:productId
-
-_Updates a product posted by the user._
-
-Example: PUT  http://localhost:4000/products/:productId
-
-_Requires a bearer token returned from POST /users/login_
-
-Request body:
-
-      {
-          "name": "Iphone 13 pro",
-          "description": "This is an unused iphone"
-          "price": 50000    
-      }
-
-## PUT /products/:productId/archive
-
-_Archives a product posted by the user._
-
-Example: PUT  http://localhost:4000/products/:productId/archive
-
-_Requires a bearer token returned from POST /users/login_
 
 
 ## POST /categories/
@@ -190,4 +170,33 @@ Example: PUT  http://localhost:4000/categories/:categoryId/archive
 
 _Requires an admin bearer token returned from POST /users/login_
 
-    
+ 
+
+## GET /users/getallorders
+
+_Returns all the orders made by all users (for admin user only)._
+
+Example: GET  http://localhost:4000/users/getallorders
+
+_Requires an admin bearer token returned from POST /users/login_
+
+        
+
+
+## GET /products/all
+
+_Returns all products posted._
+
+Example: GET  http://localhost:4000/users/all
+
+
+
+## GET /products/:productId
+
+_Returns a specific product posted._
+
+Example: GET  http://localhost:4000/users/:productId
+
+
+
+   
