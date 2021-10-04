@@ -61,7 +61,8 @@ module.exports.updateProduct = async (req, userId) => {
             {   name: req.body.name, 
                 description: req.body.description, 
                 category: req.body.category,
-                price: req.body.price 
+                price: req.body.price,
+                status:  req.body.status
             })
         .then(async updatedProduct => {          
             return await (updatedProduct)
