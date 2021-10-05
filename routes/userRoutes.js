@@ -3,6 +3,12 @@ const router = express.Router();
 const userController = require('../controllers/userControllers');
 const auth = require('../auth');
 
+
+// check email exists
+router.post('/email-exists', (req,res) => {
+	userController.emailExists(req.body).then(result => res.send(result));
+});
+
 // register user
 router.post('/register', (req, res) => {
     userController.registerUser(req.body).then(result => res.status(201).send(result));

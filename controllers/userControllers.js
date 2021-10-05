@@ -5,6 +5,13 @@ const Product = require('../models/product');
 
 
 
+// check if email exists
+module.exports.emailExists = (req) => {
+	return User.find({ email: req.email }).then(result => {
+		return result.length > 0 ? true : false;
+	});
+}
+
 // user registration
 module.exports.registerUser = (reqBody) => {
     let newUser = new User({

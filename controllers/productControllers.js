@@ -75,8 +75,8 @@ module.exports.updateProduct = async (req, userId) => {
 }
 
 // archive product
-module.exports.archiveProduct = (req) => {
-    return Product.findByIdAndUpdate({ _id: req.params.productId }, 
+module.exports.archiveProduct = (req, userId) => {
+    return Product.findOneAndUpdate({ _id: req.params.productId, createdBy: userId }, 
         {   status: 'Unavailable'
         })
     .then(archivedProduct => { 
